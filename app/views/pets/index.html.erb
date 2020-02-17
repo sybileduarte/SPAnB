@@ -1,1 +1,11 @@
-<h1>Hello</h1>
+<h1>All pets</h1>
+
+<% @pets.each do |pet| %>
+<div>
+  <ul>
+    <li>Name : <%=  pet.name %></li>
+    <li>Race : <%= pet.race %></li>
+    <li><%= link_to "More details", pet_path(pet) %> </li>
+  </ul>
+</div>
+<% end %>
