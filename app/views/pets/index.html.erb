@@ -1,14 +1,26 @@
-<h1>All pets</h1>
+<div class ="container">
+  <h1>All pets</h1>
 
-<% @pets.each do |pet| %>
-<div>
-  <ul>
-    <li>Name : <%=  pet.name %></li>
-    <li>Tags :<%  pet.tag_list.each do |tag| %>
-      <%= tag %>
-      <%= end %></li>
-    <li>Race : <%= pet.race %></li>
-    <li><%= link_to "More details", pet_path(pet) %> </li>
-  </ul>
+  <% @pets.each do |pet| %>
+  <div class="cards">
+    <%= link_to pet_path(pet) do %>
+    <div class="card-pet">
+      <!-- enlever quand on met cloudinary dans form -->
+      <!-- <#%= cl_image_tag @article.photo.key, height: 300, width: 400, crop: :fill %> -->
+      <img src="https://jardinage.lemonde.fr/images/dossiers/2019-11/berger-autralien-merle-094920.jpg">
+      <div class= "card-pet-info">
+        <div>
+          <h2><%=  pet.name %></h2>
+          <p><%= pet.race.name %></p>
+        </div>
+        <div>
+        <p> <%  pet.tag_list.each do |tag| %>
+          <%= tag %>
+          <% end %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+  <%end %>
 </div>
-<% end %>
