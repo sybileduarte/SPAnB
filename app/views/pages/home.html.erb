@@ -4,4 +4,8 @@
   <h6>From</h6>
   <h6>To</h6>
   <%= link_to "Search a pet !", "#",class:"btn btn-dark" %>
+  <%= link_to "Sign in", new_user_session_path ,class:"btn btn-dark" %>
+  <%= link_to "Sign out", destroy_user_session_path, class:"btn btn-dark" %>
+  <%= link_to "Edit password", edit_user_password_path %>
+  <%= link_to "Sign up", new_user_registration_path, class:"btn btn-dark" %>
 </div>
