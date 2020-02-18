@@ -4,6 +4,9 @@
 <div>
   <ul>
     <li>Name : <%=  pet.name %></li>
+    <li>Tags :<%  pet.tag_list.each do |tag| %>
+      <%= tag %>
+      <%= end %></li>
     <li>Race : <%= pet.race %></li>
     <li><%= link_to "More details", pet_path(pet) %> </li>
   </ul>

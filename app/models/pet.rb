@@ -7,4 +7,6 @@ class Pet < ApplicationRecord
   validates :race, presence: true
   validates :age, presence: true
   validates :description, presence: true
+
+  acts_as_taggable
 end

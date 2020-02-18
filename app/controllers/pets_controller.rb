@@ -43,10 +43,18 @@ class PetsController < ApplicationController
     redirect_to pets_path
   end
 
+  def tagged
+    if params[:tag].present?
+      @pets= Pet.tagged_with(params[:tag])
+    else
+      @pets = Pet.all
+    end
+  end
+
   private
 
   def pet_params
-    params.require(:pet).permit(:name, :race, :age, :description)
+    params.require(:pet).permit(:name, :race, :age, :description, :tag_list)
   end
 
   def find_pet
