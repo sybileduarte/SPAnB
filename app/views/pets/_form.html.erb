@@ -1,6 +1,13 @@
 <%= simple_form_for(@pet) do |t| %>
   <%= t.input :name %>
-  <%= t.input :race %>
+  <div>
+    <div id="chien" class="btn btn-secondary">Chien</div>
+    <div id="chat" class="btn btn-secondary">Chat</div>
+  </div>
+
+
+  <%= t.input :race_cat, wrapper_html: {id:"input-chat", class: "d-none"}, collection: Race.where(specie: Specie.find_by_name('chat')) %>
+  <%= t.input :race_dog, wrapper_html: {id:"input-chien", class: "d-none"}, collection: Race.where(specie: Specie.find_by_name('chien')) %>
   <%= t.input :age %>
   <%= t.input :description %>
   <%= t.button :submit  %>

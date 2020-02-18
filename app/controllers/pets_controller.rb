@@ -14,10 +14,11 @@ class PetsController < ApplicationController
   end
 
   def create
-    @pet = Pet.new(pet_params)
-    authorize @pet
+    @pet      = Pet.new(pet_params)
+    @pet.race_id = [params[:pet][:race_dog].to_i,params[:pet][:race_cat].to_i].max  { |a, b| a<=>b}
     @pet.user = current_user
-    if @pet.save
+    authorize @pet
+    if @pet.save!
       redirect_to pet_path(@pet)
     else
       render :new
@@ -43,10 +44,18 @@ class PetsController < ApplicationController
     redirect_to pets_path
   end
 
+  def tagged
+    if params[:tag].present?
+      @pets= Pet.tagged_with(params[:tag])
+    else
+      @pets = Pet.all
+    end
+  end
+
   private
 
   def pet_params
-    params.require(:pet).permit(:name, :race, :age, :description)
+    params.require(:pet).permit(:name, :race_dog, :race_cat, :age, :description, :taglist)
   end
 
   def find_pet
