@@ -16,7 +16,8 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'devise'
 gem 'acts-as-taggable-on', '~> 6.0'
-
+gem 'pundit'
+gem 'nokogiri'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
