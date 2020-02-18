@@ -16,7 +16,9 @@
     <!-- <p class="alert"><%= alert %></p> -->
     <%= render 'shared/navbar' unless params[:action] == "home" %>
     <%= render 'shared/flashes' %>
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
     <%= javascript_include_tag 'application' %>
 
     <%= javascript_pack_tag 'application' %>
