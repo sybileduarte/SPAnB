@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_17_160945) do
+ActiveRecord::Schema.define(version: 2020_02_18_111614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,13 +28,22 @@ ActiveRecord::Schema.define(version: 2020_02_17_160945) do
 
   create_table "pets", force: :cascade do |t|
     t.string "name"
-    t.string "race"
     t.integer "age"
     t.bigint "user_id"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "race_id"
+    t.index ["race_id"], name: "index_pets_on_race_id"
     t.index ["user_id"], name: "index_pets_on_user_id"
+  end
+
+  create_table "races", force: :cascade do |t|
+    t.string "name"
+    t.bigint "specie_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["specie_id"], name: "index_races_on_specie_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -44,6 +53,12 @@ ActiveRecord::Schema.define(version: 2020_02_17_160945) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["booking_id"], name: "index_reviews_on_booking_id"
+  end
+
+  create_table "species", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
@@ -90,7 +105,9 @@ ActiveRecord::Schema.define(version: 2020_02_17_160945) do
 
   add_foreign_key "bookings", "pets"
   add_foreign_key "bookings", "users"
+  add_foreign_key "pets", "races"
   add_foreign_key "pets", "users"
+  add_foreign_key "races", "species", column: "specie_id"
   add_foreign_key "reviews", "bookings"
   add_foreign_key "taggings", "tags"
 end
