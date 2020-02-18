@@ -1,0 +1,29 @@
+
+.bg-img {
+  background-size: cover;
+  background-position: 0% 29% ;
+  position:relative;
+  height:750px;
+  width:100%;
+  margin:0;
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://natgeo.imgix.net/shows/thumbnails/ngw-survivethewild.jpg?auto=compress,format&w=1920&h=960&fit=crop)
+}
+
+.search-engine{
+  padding:20px;
+  position:absolute;
+  left:160px;
+  width: 508px;
+  border-radius: 5px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.search-engine h2 {
+  font-weight: bold;
+  font-size:26px;
+}
+.search-engine .btn {
+  width:100%;
+}
