@@ -14,7 +14,7 @@
   <body>
     <!-- <p class="notice"><%= notice %></p> -->
     <!-- <p class="alert"><%= alert %></p> -->
-    <%= render 'shared/navbar' unless params[:action] == "home" %>
+    <%= render 'shared/navbar' unless (params[:action] == "home" || params[:action] == "new") %>
     <%= render 'shared/flashes' %>
     <div class="container">
       <%= yield %>

@@ -1,5 +1,5 @@
 
-.bg-img {
+.bg-img-home {
   background-size: cover;
   background-position: 0% 29% ;
   position:relative;
@@ -26,4 +26,16 @@
 }
 .search-engine .btn {
   width:100%;
+}
+
+
+.bg-img-new {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/ambroise/image/upload/v1582044384/og-lead-image-yongqing-bao---wildlife-photographer-of-the-year_rkosqd.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height:100vh;
 }
