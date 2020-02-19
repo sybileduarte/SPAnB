@@ -35,6 +35,8 @@
       </div>
     </div>
 
+    <input id="tag" class="d-none">
+
       <div class="cards">
         <% @pets.each do |pet| %>
           <%= link_to pet_path(pet) do %>
