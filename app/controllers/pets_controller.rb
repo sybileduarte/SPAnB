@@ -46,7 +46,6 @@ class PetsController < ApplicationController
     else
       render :new
     end
-    raise
   end
 
   def edit
