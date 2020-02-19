@@ -11,15 +11,8 @@ class Pet < ApplicationRecord
   validates :description, presence: true
 
   geocoded_by :address
-  # after_validation :geocode, if: :will_save_change_to_address?
-  after_validation :debug_geocoding
-
+  after_validation :geocode, if: :will_save_change_to_address?
 
   acts_as_taggable
 
-
-  def debug_geocoding
-    p self.will_save_change_to_address?
-    p self.geocode
-  end
 end

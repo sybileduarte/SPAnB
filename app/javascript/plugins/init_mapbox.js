@@ -19,8 +19,14 @@ const initMapbox = () => {
     const markers = JSON.parse(mapElement.dataset.markers);
      markers.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
+      const element = document.createElement('div');
+        element.className = 'marker';
+        element.style.backgroundImage = `url('https://res.cloudinary.com/ambroise/image/upload/v1582110360/noun_Paw_2660131_ycyfuo.png')`;
+        element.style.backgroundSize = 'contain';
+        element.style.width = '25px';
+        element.style.height = '25px';
 
-       new mapboxgl.Marker()
+       new mapboxgl.Marker(element)
          .setLngLat([ marker.lng, marker.lat ])
          .setPopup(popup)
          .addTo(map);
