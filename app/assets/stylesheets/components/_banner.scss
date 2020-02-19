@@ -1,11 +1,12 @@
 
 .bg-img-home {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
-  background-position: 0% 29% ;
-  position:relative;
-  height:750px;
-  width:100%;
-  margin:0;
+  height:100vh;
   background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/ambroise/image/upload/v1582037765/xyydcpucblhzoyvxrfpl.jpg)
 }
 
