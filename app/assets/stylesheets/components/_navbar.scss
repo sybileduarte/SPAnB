@@ -15,13 +15,18 @@
 .navbar-light .navbar-nav .nav-link {
   &.white {
     color: white;
+    &:hover {
+      margin-bottom: -3px;
+      color:white;
+      border-bottom:3px solid white;
+    }
   }
   &.black {
     color: black;
-  }
-  &:hover {
-    margin-bottom: -3px;
-    color:white;
-    border-bottom:3px solid white;
+    &:hover {
+      margin-bottom: -3px;
+      color:black;
+      border-bottom:3px solid black;
+    }
   }
 }
