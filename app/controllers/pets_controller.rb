@@ -1,7 +1,14 @@
 class PetsController < ApplicationController
   before_action :find_pet, only: [ :show, :edit, :update, :destroy]
   def index
-    @pets = policy_scope(Pet).order(created_at: :desc)
+    @pets = policy_scope(Pet.geocoded).order(created_at: :desc)
+    @markers = @pets.map do |pet|
+      {
+        lat: pet.latitude,
+        lng: pet.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { pet: pet })
+      }
+    end
   end
 
   def show
@@ -18,7 +25,7 @@ class PetsController < ApplicationController
     @pet.race_id = [params[:pet][:race_dog].to_i,params[:pet][:race_cat].to_i].max  { |a, b| a<=>b}
     @pet.user = current_user
     authorize @pet
-    if @pet.save!
+    if @pet.save
       redirect_to pet_path(@pet)
     else
       render :new
