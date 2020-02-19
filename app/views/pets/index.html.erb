@@ -1,6 +1,40 @@
 <div class ="content">
   <div class="row">
     <div class="col-5">
+
+    <div class="row justify-content-center mt-5">
+      <div class="col-sm-8 text-center">
+        <div class="d-flex flex-wrap justify-content-center pt-4">
+          <div class="clickable index">
+            <i class="fas fa-heart"></i>
+            <small>Calin</small>
+          </div>
+
+          <div class="clickable index">
+            <i class="fas fa-volleyball-ball"></i>
+            <small>Joueur</small>
+          </div>
+          <div class="clickable index">
+            <i class="fas fa-running"></i>
+            <small>Sportif</small>
+          </div>
+
+          <div class="clickable index">
+            <i class="fas fa-paw"></i>
+            <small>Protecteur</small>
+          </div>
+          <div class="clickable index">
+            <i class="fas fa-bed"></i>
+            <small>Dormeur</small>
+          </div>
+          <div class="clickable index">
+            <i class="fas fa-bone"></i>
+            <small>Bon vivant</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
       <div class="cards">
         <% @pets.each do |pet| %>
           <%= link_to pet_path(pet) do %>
