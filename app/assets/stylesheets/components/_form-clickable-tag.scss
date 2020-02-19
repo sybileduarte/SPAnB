@@ -10,10 +10,13 @@
   flex-direction: column;
   cursor: pointer;
 }
-.clickable i {
-  font-size: 24px;
-  margin-bottom: 10px;
+
+.index {
+  padding: 5px;
+  width: 70px;
 }
+
+
 .clickable:hover i {
   color: #52ACF4;
 }
@@ -23,4 +26,18 @@
 }
 .clickable.active i {
   color: #52ACF4;
+}
+
+.clickable i {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.index i {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.index small {
+  font-size: 12px;
 }
