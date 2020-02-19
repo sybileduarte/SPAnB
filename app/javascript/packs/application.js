@@ -3,9 +3,13 @@ import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the styleshe
 
 import { selectSpecie } from '../components/form_specie_selection';
 
-selectSpecie();
-
+import { clickTags } from '../components/form_specie_clickable_tag'
 
 import { initMapbox } from '../plugins/init_mapbox';
 
+selectSpecie();
+
+clickTags();
+
 initMapbox();
+
