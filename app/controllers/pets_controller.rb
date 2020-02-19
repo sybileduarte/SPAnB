@@ -1,7 +1,13 @@
 class PetsController < ApplicationController
   before_action :find_pet, only: [ :show, :edit, :update, :destroy]
   def index
-    @pets = policy_scope(Pet).order(created_at: :desc)
+    @pets = policy_scope(Pet.geocoded).order(created_at: :desc)
+    @markers = @pets.map do |pet|
+      {
+        lat: pet.latitude,
+        lng: pet.longitude
+      }
+    end
   end
 
   def show
