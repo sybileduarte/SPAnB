@@ -1,0 +1,15 @@
+.container_log {
+  padding: 15px;
+  background-color: #F9F5FF;
+  width: 50%;
+  position: absolute;
+  display:inline-block;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow:  0.5px 0.5px black;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.9;
+}
+
