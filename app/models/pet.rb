@@ -9,7 +9,7 @@ class Pet < ApplicationRecord
   validates :race, presence: true
   validates :age, presence: true
   validates :description, presence: true
-  validates :photo, presence: true
+  validates :photos, presence: true
   validates :address, presence: true
   validates :price, presence: true
 
@@ -17,6 +17,6 @@ class Pet < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
 
   acts_as_taggable
-  has_one_attached :photo
+  has_many_attached :photos
 
 end
