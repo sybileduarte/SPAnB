@@ -1,8 +1,9 @@
+<div class="container">
 <%= simple_form_for(@pet) do |t| %>
   <%= t.input :name %>
-  <div>
-    <div id="chien" class="btn btn-secondary">Chien</div>
-    <div id="chat" class="btn btn-secondary">Chat</div>
+  <div id="icons-specie" class="d-flex justify-content-center">
+    <div id="chien" class="btn btn-secondary m-3 p-4"><i class="fas fa-dog"></i></div>
+    <div id="chat" class="btn btn-secondary m-3 p-4"><i class="fas fa-cat"></i></div>
   </div>
 
 
@@ -10,5 +11,46 @@
   <%= t.input :race_dog, wrapper_html: {id:"input-chien", class: "d-none"}, collection: Race.where(specie: Specie.find_by_name('chien')) %>
   <%= t.input :age %>
   <%= t.input :description %>
-  <%= t.button :submit  %>
-<% end %>
+  <%= t.input :address %>
+    <div class="row justify-content-center mt-5">
+      <div class="col-sm-8 text-center">
+        <h3>Describe your pet</h3>
+        <div class="d-flex flex-wrap justify-content-center pt-4">
+          <div class="clickable">
+            <i class="fas fa-heart"></i>
+            <small>Calin</small>
+          </div>
+          <div class="clickable">
+            <i class="fas fa-volleyball-ball"></i>
+            <small>Joueur</small>
+          </div>
+          <div class="clickable">
+            <i class="fas fa-running"></i>
+            <small>Sportif</small>
+          </div>
+          <div class="clickable">
+            <i class="fas fa-paw"></i>
+            <small>Protecteur</small>
+          </div>
+          <div class="clickable">
+            <i class="fas fa-bed"></i>
+            <small>Dormeur</small>
+          </div>
+          <div class="clickable">
+            <i class="fas fa-bone"></i>
+            <small>Bon vivant</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  <%= t.input :tag_list, wrapper_html: {class: "d-none"}, input_html: {id:"tag",value: t.object.tag_list.join(",")} %>
+  <div class="d-flex justify-content-center m-3">
+    <%= t.button :submit, class: "btn btn-secondary text-center p-3" %>
+  </div>
+  <%= f.input :photo, as: :file %>
+  <% end %>
+</div>
+
+
+
+
