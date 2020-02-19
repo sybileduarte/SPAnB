@@ -13,7 +13,7 @@
   <%= t.input :photo, as: :file %>
   <%= t.input :description %>
   <%= t.input :address %>
-    <div class="row justify-content-center mt-5">
+    <div class="row justify-content-center mt-5 mb-2">
       <div class="col-sm-8 text-center">
         <h3>Describe your pet</h3>
         <div class="d-flex flex-wrap justify-content-center pt-4">
@@ -45,6 +45,7 @@
       </div>
     </div>
   <%= t.input :tag_list, wrapper_html: {class: "d-none"}, input_html: {id:"tag",value: t.object.tag_list.join(",")} %>
+  <%= t.input :price, label: "Price per day €" %>
   <div class="d-flex justify-content-center m-3">
     <%= t.button :submit, class: "btn btn-secondary text-center p-3" %>
   </div>
