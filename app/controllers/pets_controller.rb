@@ -1,5 +1,7 @@
 class PetsController < ApplicationController
   before_action :find_pet, only: [ :show, :edit, :update, :destroy]
+
+  TAGS = ["Calin","Joueur","Sportif","Protecteur","Dormeur","Bon vivant"]
   def index
     @pets = policy_scope(Pet.geocoded).order(created_at: :desc)
     @markers = @pets.map do |pet|
@@ -23,6 +25,20 @@ class PetsController < ApplicationController
   def create
     @pet      = Pet.new(pet_params)
     @pet.race_id = [params[:pet][:race_dog].to_i,params[:pet][:race_cat].to_i].max  { |a, b| a<=>b}
+    tag_list = params[:pet][:tag_list].split(",")
+    new_tag_list = Hash.new(0)
+    TAGS.each do |tag|
+      new_tag_list[tag] = tag_list.count(tag)
+    end
+
+    array_tag_list = []
+    new_tag_list.each do |key,value|
+      if new_tag_list[key] % 2 == 1
+        array_tag_list << key
+      end
+    end
+
+    @pet.tag_list = array_tag_list
     @pet.user = current_user
     authorize @pet
     if @pet.save
@@ -30,6 +46,7 @@ class PetsController < ApplicationController
     else
       render :new
     end
+    raise
   end
 
   def edit
