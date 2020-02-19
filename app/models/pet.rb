@@ -9,10 +9,13 @@ class Pet < ApplicationRecord
   validates :race, presence: true
   validates :age, presence: true
   validates :description, presence: true
+  validates :photo, presence: true
+  validates :address, presence: true
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
   acts_as_taggable
+  has_one_attached :photo
 
 end
