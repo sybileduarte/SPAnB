@@ -7,8 +7,6 @@ class Booking < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
 
-  def
-
   def period
     start_date..end_date
   end
