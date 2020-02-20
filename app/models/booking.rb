@@ -3,8 +3,11 @@ class Booking < ApplicationRecord
   belongs_to :user
   has_many :reviews
   validate :end_after_start
+  validate :validate_other_booking_overlap
   validates :start_date, presence: true
   validates :end_date, presence: true
+
+  def
 
   def period
     start_date..end_date
@@ -20,13 +23,16 @@ private
     end
   end
 
-#SHOULD WE JUST PUT THIS IN OUR CONTROLLER ?
-  # def validate_other_booking_overlap
-  #   other_bookings = Pet.new.bookings
-  #   is_overlapping = other_bookings.any? do |other_booking|
-  #     period.overlaps?(other_booking.period)
-  #   end
-  #   errors.add(:overlaps_with_other) if is_overlapping
-  # end
+  def validate_other_booking_overlap
+    # other_bookings = self.pet.bookings
+    # is_overlapping = other_bookings.any? do |other_booking|
+    #   period.overlaps?(other_booking.period)
+    # end
+    # errors.add(:overlaps_with_other) if is_overlapping
+
+    self.bookings.any? do |other_booking|
+      return errors.add(:overlaps_with_other) if period.overlaps?(other_booking.period)
+    end
+  end
 
 end
