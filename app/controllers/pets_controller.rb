@@ -5,15 +5,15 @@ class PetsController < ApplicationController
   def index
     if params[:query].present?
       if params[:address].present?
-        @pets = policy_scope(Pet).near(params[:address],50).global_search(params[:query]).order(created_at: :desc)
+        @pets = policy_scope(Pet).where(bookable: :true).near(params[:address],50).global_search(params[:query]).order(created_at: :desc)
       else
-        @pets = policy_scope(Pet).geocoded.global_search(params[:query]).order(created_at: :desc)
+        @pets = policy_scope(Pet).where(bookable: :true).geocoded.global_search(params[:query]).order(created_at: :desc)
       end
     else
       if params[:address].present?
-        @pets = policy_scope(Pet).near(params[:address],20).order(created_at: :desc)
+        @pets = policy_scope(Pet).where(bookable: :true).near(params[:address],20).order(created_at: :desc)
       else
-        @pets = policy_scope(Pet.geocoded).order(created_at: :desc)
+        @pets = policy_scope(Pet.geocoded).where(bookable: :true).order(created_at: :desc)
       end
     end
 
@@ -80,6 +80,7 @@ class PetsController < ApplicationController
   def destroy
     authorize @pet
     @pet.bookable = false
+    @pet.save
     redirect_to pets_path
   end
 
