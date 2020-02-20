@@ -1,19 +1,24 @@
 <div class="bg-img-home">
   <%= render 'shared/navbar' %>
-  <div class="search-engine search-bar">
-    <%= form_tag pets_path, method: :get, class:"horizontal" do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control adjectives",
-          placeholder: "Try \"beautiful labrador\""
-        %>
-        <%= text_field_tag :address,
-          params[:address],
-          class: "form-control address",
-          placeholder: "Lille Flandres..."
-        %>
-        <%= submit_tag "Search", class: "btn btn-dark" %>
-    <% end %>
+  <div class="content">
+    <h2 class ="text-typed">
+      <span id="banner-typed-text"></span>
+    </h2>
+    <div class="search-engine search-bar">
+      <%= form_tag pets_path, method: :get, class:"horizontal" do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control adjectives",
+            placeholder: "Try \"beautiful labrador\""
+          %>
+          <%= text_field_tag :address,
+            params[:address],
+            class: "form-control address",
+            placeholder: "Lille Flandres..."
+          %>
+          <%= submit_tag "Search", class: "btn btn-dark" %>
+      <% end %>
+    </div>
   </div>
   <%= render 'shared/road' %>
 </div>
