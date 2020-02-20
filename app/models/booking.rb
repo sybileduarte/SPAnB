@@ -30,7 +30,7 @@ private
     # end
     # errors.add(:overlaps_with_other) if is_overlapping
 
-    self.bookings.any? do |other_booking|
+    self.pet.bookings.any? do |other_booking|
       return errors.add(:overlaps_with_other) if period.overlaps?(other_booking.period)
     end
   end
