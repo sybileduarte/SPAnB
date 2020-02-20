@@ -21,3 +21,6 @@ showFormReview();
 import { dynamicRating } from "../plugins/starsInReviewForm";
 
 dynamicRating();
+
+import { loadDynamicBannerText } from '../components/banner';
+loadDynamicBannerText();
