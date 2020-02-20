@@ -13,7 +13,6 @@
   padding:20px;
   position:absolute;
   left:160px;
-  width: 508px;
   border-radius: 5px;
   overflow: hidden;
   background: white;
@@ -27,7 +26,7 @@
   font-size:26px;
 }
 .search-engine .btn {
-  width:100%;
+  width:80px;
 }
 
 
@@ -55,3 +54,25 @@
   }
 }
 
+.horizontal{
+  display:flex;
+  width:1000px;
+  align-items:center;
+  position:relative
+}
+
+.adjectives{
+  width: 40%;
+  border-radius:7px;
+}
+
+.address{
+  width:25%;
+  margin-left:12px;
+  border-radius:7px;
+}
+
+.btn-dark{
+  position:absolute;
+  right:0px;
+}
