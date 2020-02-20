@@ -7,15 +7,17 @@
         <li data-target="#carouselPetIndicators" data-slide-to="2"></li>
       </ol>
       <div class="carousel-inner">
-        <div class="carousel-item active">
-          <%= cl_image_tag @pet.photos.first.key, class: "img d-block w-100", width: 600, height: 500, crop: :fill %>
-        </div>
-        <div class="carousel-item">
-          <%= cl_image_tag @pet.photos.second.key, class: "img d-block w-100", width: 600, height: 500, crop: :fill %>
-        </div>
-        <div class="carousel-item">
-          <%= cl_image_tag @pet.photos.third.key, class: "img d-block w-100", width: 600, height: 500, crop: :fill %>
-        </div>
+        <% if @pet.photos.attached? %>
+         <% @pet.photos.each_with_index do |photo,index| %>
+           <div class="carousel-item <%= "active" if index == 0 %>">
+             <%= cl_image_tag photo.key , class: "img d-block w-100", width: 600, height: 500, crop: :fill %>
+           </div>
+         <% end %>
+        <% else %>
+          <div class="carousel-item active">
+            <%= cl_image_tag "azerty" , class: "img d-block w-100", width: 600, height: 500, crop: :fill %>
+          </div>
+        <% end %>
       </div>
       <a class="carousel-control-prev" href="#carouselPetIndicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
