@@ -14,3 +14,7 @@ clickTags();
 
 initMapbox();
 
+import { showFormReview } from '../components/form_review_booking';
+
+showFormReview();
+

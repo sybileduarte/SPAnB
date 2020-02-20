@@ -2,8 +2,7 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = policy_scope(Booking).order(created_at: :desc)
-    # @pet_bookings
-
+    @review = Review.new
   end
 
   def new

@@ -1,8 +1,36 @@
+<div class="container">
+
 <h1>My bookings</h1>
 
 <% @bookings.each do |booking| %>
-  <%= booking.start_date %> ->
-  <%= booking.end_date %>
-  <%= booking.pet.name %>
-  <%= booking.user.email %>
+
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <%#= cl_image_tag booking.pet.photos.first.key, height: 300, width: 400, crop: :fill %>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"><%= booking.pet.name %></h5>
+          <p class="card-text">From <%= booking.start_date.strftime("%d/%m") %> to <%= booking.end_date.strftime("%d/%m") %></p>
+          <p class="card-text"><small class="text-muted"><%= Integer(booking.end_date - Date.today) %> days ago</small></p>
+          <% if booking.review.nil? %>
+            <button class="add-review btn btn-secondary">Add a review</button>
+          <% else %>
+            <button class="add-review btn btn-secondary">Update review</button>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-none">
+    <%= simple_form_for([booking, @review]) do |t| %>
+      <%= t.input :content %>
+      <%= t.input :rating %>
+      <%= t.submit %>
+    <% end %>
+  </div>
 <% end %>
+
+</div>
