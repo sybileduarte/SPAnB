@@ -4,11 +4,10 @@
 >
 <div class="container">
   <div class="form-wrapper">
-    <h2>Book a pet</h2>
     <%= simple_form_for [@pet, @booking] do |f| %>
-      <%= f.input :start_date, label: "Pick a date:", as: :string, required: false, input_html: { id: "range_start", class: "d-none"} %>
+      <%= f.input :start_date, label: "Choose a date:", as: :string, required: false, input_html: { id: "range_start", class: "d-none"} %>
       <%= f.input :end_date, label: false, as: :string, required: false, input_html: { id: "range_end", class: "d-none" } %>
-      <%= f.button :submit, "Book", class: "btn btn-primary" %>
+      <%= f.button :submit, "Book", class: "btn btn-secondary w-100" %>
     <% end %>
   </div>
 </div>
