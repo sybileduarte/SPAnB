@@ -3,7 +3,7 @@
 <h1>My bookings</h1>
 
 <% @bookings.each do |booking| %>
-
+  <div class="booking">
   <div class="card mb-3" style="max-width: 540px;">
     <div class="row no-gutters">
       <div class="col-md-4">
@@ -13,24 +13,36 @@
         <div class="card-body">
           <h5 class="card-title"><%= booking.pet.name %></h5>
           <p class="card-text">From <%= booking.start_date.strftime("%d/%m") %> to <%= booking.end_date.strftime("%d/%m") %></p>
-          <p class="card-text"><small class="text-muted"><%= Integer(booking.end_date - Date.today) %> days ago</small></p>
+          <p class="card-text"><small class="text-muted">
+            <% if Integer(Date.today - booking.end_date) <= 0 %>
+            Still renting the pet
+            <% else %>
+            <%= Integer(Date.today - booking.end_date) %> days ago
+            <% end %>
+          </small></p>
           <% if booking.review.nil? %>
             <button class="add-review btn btn-secondary">Add a review</button>
           <% else %>
-            <button class="add-review btn btn-secondary">Update review</button>
+            <button class="see-review btn btn-outline-secondary"> <%= link_to "See my review", pet_path(booking.pet) %> </button>
           <% end %>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="d-none">
+  <div class="d-none my-3">
     <%= simple_form_for([booking, @review]) do |t| %>
       <%= t.input :content %>
-      <%= t.input :rating %>
-      <%= t.submit %>
+      <%= t.input :rating, as: :hidden  %>
+      <div class="review my-3">
+        <% 5.times do |index| %>
+          <i id="<%= index + 1 %>"  class="review-rating far fa-star"></i>
+        <% end %>
+      </div>
+      <%= t.submit 'Done!', class: "btn btn-secondary" %>
     <% end %>
   </div>
 <% end %>
-
+</div>
+</div>
 </div>

@@ -18,3 +18,6 @@ import { showFormReview } from '../components/form_review_booking';
 
 showFormReview();
 
+import { dynamicRating } from "../plugins/starsInReviewForm";
+
+dynamicRating();
