@@ -1,0 +1,26 @@
+.see-review a {
+  text-decoration: none;
+  color: #5A6268;
+
+  &:hover {
+    color: white;
+  }
+}
+
+.see-review button {
+  text-decoration: none;
+  color: white;
+
+  &:hover {
+    color: white;
+  }
+}
+
+
+.fa-star {
+  color:  #E8C848;
+  cursor: pointer;
+}
+.review i {
+  font-size: 32px;
+}
