@@ -1,6 +1,6 @@
 <div class="bg-img-home">
   <%= render 'shared/navbar' %>
-  <div class="search-engine">
+  <div class="search-engine search-bar">
     <%= form_tag pets_path, method: :get, class:"horizontal" do %>
         <%= text_field_tag :query,
           params[:query],
@@ -14,5 +14,9 @@
         %>
         <%= submit_tag "Search", class: "btn btn-dark" %>
     <% end %>
+  </div>
+  <div id = "road">
+    <i class="fas fa-cat fa-flip-horizontal icon-cat-home"></i>
+    <i class="fas fa-dog icon-dog-home"></i>
   </div>
 </div>
