@@ -14,10 +14,12 @@
           <h5 class="card-title"><%= booking.pet.name %></h5>
           <p class="card-text">From <%= booking.start_date.strftime("%d/%m") %> to <%= booking.end_date.strftime("%d/%m") %></p>
           <p class="card-text"><small class="text-muted">
-            <% if Integer(Date.today - booking.end_date) <= 0 %>
+            <% if Integer(Date.today - booking.end_date) > 0 %>
+            <%= Integer(Date.today - booking.end_date) %> days ago
+            <% elsif Integer(Date.today - booking.start_date) >= 0 %>
             Still renting the pet
             <% else %>
-            <%= Integer(Date.today - booking.end_date) %> days ago
+            The pet is coming soon to you
             <% end %>
           </small></p>
           <% if booking.review.nil? %>

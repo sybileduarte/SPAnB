@@ -14,3 +14,4 @@ import rangePlugin from "flatpickr/dist/plugins/rangePlugin"
     "disable": bookings,
   })
 }
+

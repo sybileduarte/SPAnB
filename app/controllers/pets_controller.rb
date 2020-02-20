@@ -3,7 +3,20 @@ class PetsController < ApplicationController
 
   TAGS = ["Calin","Joueur","Sportif","Protecteur","Dormeur","Bon vivant"]
   def index
-    @pets = policy_scope(Pet.geocoded).order(created_at: :desc)
+    if params[:query].present?
+      if params[:address].present?
+        @pets = policy_scope(Pet).near(params[:address],50).global_search(params[:query]).order(created_at: :desc)
+      else
+        @pets = policy_scope(Pet).geocoded.global_search(params[:query]).order(created_at: :desc)
+      end
+    else
+      if params[:address].present?
+        @pets = policy_scope(Pet).near(params[:address],20).order(created_at: :desc)
+      else
+        @pets = policy_scope(Pet.geocoded).order(created_at: :desc)
+      end
+    end
+
     @markers = @pets.map do |pet|
       {
         lat: pet.latitude,

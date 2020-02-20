@@ -1,11 +1,19 @@
 <div class="bg-img-home">
   <%= render 'shared/navbar' %>
   <div class="search-engine">
-    <h2>Book a pet for a day or more</h2>
-    <h6>Where?</h6>
-    <h6>From</h6>
-    <h6>To</h6>
-    <%= link_to "Search a pet !", pets_path,class:"btn btn-dark" %>
+    <%= form_tag pets_path, method: :get, class:"horizontal" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control adjectives",
+          placeholder: "Try \"beautiful labrador\""
+        %>
+        <%= text_field_tag :address,
+          params[:address],
+          class: "form-control address",
+          placeholder: "Lille Flandres..."
+        %>
+        <%= submit_tag "Search", class: "btn btn-dark" %>
+    <% end %>
   </div>
   <div id = "road">
     <i class="fas fa-cat fa-flip-horizontal icon-cat-home"></i>

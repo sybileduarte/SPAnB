@@ -19,5 +19,14 @@ class Pet < ApplicationRecord
 
   acts_as_taggable
   has_many_attached :photos
+  include PgSearch::Model
+  pg_search_scope :global_search,
+    against: [ :description, :name ],
+    associated_against: {
+      race: [:name]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
 
 end
