@@ -1,7 +1,6 @@
 <div class="image">
   <%= render 'shared/navbar' %>
   <div class="container_log">
-    <div>
       <h2>Sign up</h2>
 
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -28,9 +27,8 @@
         </div>
 
         <div class="form-actions">
-          <%= f.button :submit, "Sign up" %>
+          <div class = "btn button"> <%= f.button :submit, "Sign up" %></div>
         </div>
-    </div>
     <% end %>
   <%= render "devise/shared/links" %>
   </div>
