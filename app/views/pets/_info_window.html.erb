@@ -1,3 +1,7 @@
-<h2><%= pet.name %></h2>
+<% if pet.photos.attached? %>
+   <%= cl_image_tag pet.photos.first.key, height: 100, width: 200, crop: :fill %>
+<% else %>
+  <%= cl_image_tag "azerty", height: 100, width: 200, crop: :fill %>
+<% end %>
 <h3><%= pet.race.name %></h3>
 <p><%= pet.address %></p>

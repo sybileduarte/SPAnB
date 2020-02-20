@@ -1,48 +1,64 @@
-.cards {
-  margin-left: 30px;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 16px;
-
-  a {
-    &:hover { text-decoration: none; }
-  }
-}
-
 .card-pet {
+  margin-left : 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   overflow: hidden;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  border-radius: 4px;
-  color: black;
-}
-
-
-
-.card-pet > img {
-  height: 200px;
-  width: 100%;
-  object-fit: cover;
-}
-
-.card-pet h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.card-pet p {
-  font-size: 12px;
-  opacity: .7;
-  margin: 0;
-}
-
-
-.card-pet .card-pet-info {
-  padding: 16px;
+  height: 250px;
+  background: #F4F4F4;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  border-top: 1px solid rgb(200,200,200);
 }
 
+.card-pet img {
+  height: 100%;
+  width: 300px;
+  object-fit: cover;
+  border-radius:5px;
+}
 
+.card-pet-info{
+  width:100%;
+  padding-left:10px;
+  color:black;
+  position:relative;
+}
+
+a {
+  &:hover { text-decoration: none; }
+}
+
+h2 {
+  font-size: 20px;
+}
+
+h3 {
+  font-size: 14px;
+}
+
+.card-photos img{
+  height:50px;
+  width:50px;
+}
+
+.card-photos{
+  position:absolute;
+  bottom:0px;
+}
+
+.card-price{
+  position:absolute;
+  bottom:0px;
+  right:0px;
+}
+
+.tags{
+  display: flex;
+  justify-content:flex-start;
+}
+
+.tag {
+  border: 1px solid rgb(200,200,200);
+  border-radius:3px;
+  padding:3px;
+  margin-right:10px;
+}
