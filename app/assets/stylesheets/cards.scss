@@ -62,3 +62,31 @@ h3 {
   padding:3px;
   margin-right:10px;
 }
+
+.card-pet-description {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: white;
+  border-radius:5px;
+  box-shadow:  0 0 15px rgba(0,0,0,0.2);
+  opacity: 0.9;
+
+  i {
+    font-size: 100px;
+    opacity: 0.5;
+  }
+
+}
+
+ ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+ }
+
+ .cards-descriptions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+ }

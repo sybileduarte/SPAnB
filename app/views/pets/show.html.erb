@@ -1,6 +1,6 @@
-<div class="container">
-  <div class="d-flex justify-content-between mt-5">
-    <div id="carouselPetIndicators" class="carousel  d-flex justify-content-center" data-ride="carousel">
+<div class="background-show-pets">
+  <div class="container">
+    <div id="carouselPetIndicators" class="carousel" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselPetIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselPetIndicators" data-slide-to="1"></li>
@@ -30,9 +30,12 @@
     </div>
 
 
+
+
+  <div class = "description&background d-flex justify-content-around mt-5">
     <div class= "pet-description">
       <div class= "description-header d-flex justify-content-between">
-        <h3>  <%= @pet.name %> </h3>
+        <h1><%= @pet.name %></h1>
         <div class="display-price&tags">
           <%= @pet.price%>€
           <div class= "display-tags d-flex justify-content-between">
@@ -45,22 +48,35 @@
       <hr>
       <div class= "description">
         <div class="bottom-separation-description ">
-          <div>
-            <i class="fas fa-paw"></i>
-            <%= @pet.race.name %>
-          </div>
-          <div>
-            <i class="fas fa-birthday-cake"></i>
-            <%= @pet.age %> years old
-          </div>
-          <div>
-            <i class="fas fa-map-marked-alt"></i>
-            <%= @pet.address %>
+          <div class="cards-descriptions">
+            <div class = "card-pet-description text-center p-3">
+              <ul>
+                <li><i class="fas fa-paw mb-2"></i></li>
+                <li><%= @pet.race.name %></li>
+              </ul>
+            </div>
+            <div class = "card-pet-description text-center p-3">
+              <ul>
+                <li><i class="fas fa-birthday-cake mb-2"></i></li>
+                <li><%= @pet.age %> years old</li>
+              </ul>
+            </div>
+            <div class = "card-pet-description text-center p-3">
+              <ul>
+                <li><i class="fas fa-map-marked-alt mb-2"></i></li>
+                <li><%= @pet.address %></li>
+              </ul>
+            </div>
+            <div class = "card-pet-description text-center p-3">
+              <ul>
+                <li><i class="fas fa-question mb-2"></i></li>
+                <li><%= @pet.description %></div></li>
+               </ul>
+            </div>
           </div>
         </div>
-        <div><%= @pet.description %></div>
       </div>
-    </div>
-    <%= render 'shared/flatpickr_form' %>
+      <%= render 'shared/flatpickr_form' %>
+      </div>
   </div>
 </div>
