@@ -26,19 +26,14 @@ class PetsController < ApplicationController
     @pet      = Pet.new(pet_params)
     @pet.race_id = [params[:pet][:race_dog].to_i,params[:pet][:race_cat].to_i].max  { |a, b| a<=>b}
     tag_list = params[:pet][:tag_list].split(",")
-    new_tag_list = Hash.new(0)
+    new_tag_list = []
     TAGS.each do |tag|
-      new_tag_list[tag] = tag_list.count(tag)
-    end
-
-    array_tag_list = []
-    new_tag_list.each do |key,value|
-      if new_tag_list[key] % 2 == 1
-        array_tag_list << key
+      if tag_list.count(tag) > 0
+        new_tag_list << tag
       end
     end
 
-    @pet.tag_list = array_tag_list
+    @pet.tag_list = new_tag_list
     @pet.user = current_user
     authorize @pet
     if @pet.save
@@ -78,7 +73,7 @@ class PetsController < ApplicationController
   private
 
   def pet_params
-    params.require(:pet).permit(:name, :race_dog, :race_cat, :age, :description, :tag_list, :photo, :address, :price)
+    params.require(:pet).permit(:name, :race_dog, :race_cat, :age, :description, :tag_list, :address, :price, photos: [])
   end
 
   def find_pet

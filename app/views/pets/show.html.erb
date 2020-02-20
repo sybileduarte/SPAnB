@@ -1,13 +1,14 @@
 <div class="container">
   <div class="d-flex justify-content-between">
     <div>
-      <%= cl_image_tag @pet.photo.key, height: 700, width: 700, crop: :fill %>
+      <%= cl_image_tag @pet.photos.first.key, height: 700, width: 700, crop: :fill %>
     </div >
     <div class="container">
       <h1><%= @pet.name %></h1>
       <h5><%= @pet.race.name %></h5>
       <h6>Age : <%= @pet.age %></h6>
       <h6> Description : <%= @pet.description %></h6>
+      <h6>There are <%= @pet.photos.count %> photos.</h6>
 
       <p> <%=  @pet.name %> is <%  @pet.tag_list.each do |tag| %>
                 <%= tag %>
