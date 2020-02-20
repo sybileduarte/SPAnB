@@ -4,6 +4,7 @@ class Pet < ApplicationRecord
   belongs_to :user
   has_many :bookings
   belongs_to :race
+  has_many :reviews, through: :bookings
 
   validates :name, presence: true
   validates :race, presence: true
