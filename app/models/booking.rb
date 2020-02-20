@@ -7,8 +7,6 @@ class Booking < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
 
-  def
-
   def period
     start_date..end_date
   end
@@ -24,15 +22,15 @@ private
   end
 
   def validate_other_booking_overlap
-    # other_bookings = self.pet.bookings
-    # is_overlapping = other_bookings.any? do |other_booking|
-    #   period.overlaps?(other_booking.period)
-    # end
-    # errors.add(:overlaps_with_other) if is_overlapping
-
-    self.bookings.any? do |other_booking|
-      return errors.add(:overlaps_with_other) if period.overlaps?(other_booking.period)
+    other_bookings = self.pet.bookings
+    is_overlapping = other_bookings.any? do |other_booking|
+      period.overlaps?(other_booking.period)
     end
+    errors.add(:overlaps_with_other) if is_overlapping
+
+    # self.pet.bookings.any? do |other_booking|
+    #   return errors.add(:overlaps_with_other) if period.overlaps?(other_booking.period)
+    # end
   end
 
 end

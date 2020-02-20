@@ -15,6 +15,14 @@ class PetsController < ApplicationController
 
   def show
     authorize @pet
+    @booking = Booking.new
+    @bookings = Booking.where(pet_id: @pet.id)
+    @bookings_dates = @bookings.map do |booking|
+     {
+       from: booking.start_date,
+       to:   booking.end_date
+     }
+    end
   end
 
   def new

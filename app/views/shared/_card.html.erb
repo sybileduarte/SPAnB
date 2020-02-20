@@ -1,0 +1,28 @@
+<div class="card-pet">
+  <% if pet.photos.attached? %>
+     <%= cl_image_tag pet.photos.first.key, crop: :fill %>
+  <% else %>
+    <img src="https://jardinage.lemonde.fr/images/dossiers/2019-11/berger-autralien-merle-094920.jpg">
+  <% end %>
+  <div class= "card-pet-info">
+    <div>
+      <h2><%= pet.race.name %></h2>
+      <h3><%= pet.description %></h3>
+      <div class="tags">
+        <%  pet.tag_list.each do |tag| %>
+          <h3 class="tag"><%= tag %></h3>
+        <% end %>
+      </div>
+    </div>
+    <div class="card-photos">
+       <% if pet.photos.attached? %>
+        <% pet.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, crop: :fill %>
+        <% end %>
+       <% end %>
+    </div>
+    <div class="card-price">
+      <h2><strong><%= pet.price %>€</strong> /day</h2>
+    </div>
+  </div>
+</div>

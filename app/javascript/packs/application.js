@@ -6,6 +6,7 @@ import { selectSpecie } from '../components/form_specie_selection';
 import { clickTags } from '../components/form_specie_clickable_tag'
 
 import { initMapbox } from '../plugins/init_mapbox';
+import "../plugins/flatpickr"
 
 selectSpecie();
 
