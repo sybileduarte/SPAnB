@@ -92,7 +92,7 @@ h3 {
  }
 
  .stars-display {
-  border: solid 1px #928c8c;
+  border: solid 1px #f4f4f4;
   border-radius: 3px
  }
 
@@ -100,8 +100,10 @@ h3 {
     font-size: 30px;
 }
 
-.card-pet-description {
+.card-review-description {
   border-radius:5px;
   box-shadow:  0 0 15px rgba(0,0,0,0.2);
   opacity: 0.9;
+  margin: 17%
+
 }
