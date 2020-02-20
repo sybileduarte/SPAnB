@@ -79,7 +79,7 @@ class PetsController < ApplicationController
 
   def destroy
     authorize @pet
-    @pet.destroy
+    @pet.bookable = false
     redirect_to pets_path
   end
 
