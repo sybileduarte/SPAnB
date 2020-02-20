@@ -90,3 +90,18 @@ h3 {
   grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
  }
+
+ .stars-display {
+  border: solid 1px #928c8c;
+  border-radius: 3px
+ }
+
+.custom-stars {
+    font-size: 30px;
+}
+
+.card-pet-description {
+  border-radius:5px;
+  box-shadow:  0 0 15px rgba(0,0,0,0.2);
+  opacity: 0.9;
+}
