@@ -16,9 +16,14 @@
     <!-- <p class="alert"><%= alert %></p> -->
     <%= render 'shared/navbar' unless (params[:action] == "home" || params[:action] == "new") %>
     <%= render 'shared/flashes' %>
-    <%= yield %>
+    <div class="container-global">
+      <%= yield %>
+      <!-- <i class="fas fa-dog icon-dog-home"></i> -->
+      <!-- <i class="fas fa-cat fa-flip-horizontal icon-cat-home"></i> -->
+      <!--<%= render 'shared/footer' %>-->
+    </div>
     <%= javascript_include_tag 'application' %>
-
     <%= javascript_pack_tag 'application' %>
+
   </body>
 </html>
