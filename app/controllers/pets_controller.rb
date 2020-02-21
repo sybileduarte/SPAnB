@@ -101,7 +101,8 @@ class PetsController < ApplicationController
   end
 
   def ownerview
-    @pets = policy_scope(Pet).order(created_at: :desc)
+    owner = current_user.id
+    @pets = policy_scope(Pet).where(user_id: owner).order(created_at: :desc)
   end
 
   private

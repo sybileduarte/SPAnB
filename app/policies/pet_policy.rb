@@ -34,6 +34,6 @@ class PetPolicy < ApplicationPolicy
   end
 
   def ownerview
-    return true
+    record.user == user
   end
 end
