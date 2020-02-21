@@ -18,12 +18,10 @@ class PetsController < ApplicationController
     end
 
     if (params[:start_date].present? && params[:end_date].present?)
-      range = (:start_date..:end_date)
-      @pets = policy_scope(Pet).available(range)
-      raise
-    else
-      @pets = policy_scope(Pet).order(created_at: :desc)
-      raise
+      start_date = Date.parse params[:start_date][0]
+      end_date = Date.parse params[:end_date][0]
+      range = (start_date..end_date)
+      @pets = pets_available(@pets,range)
     end
 
     @markers = @pets.map do |pet|
@@ -109,5 +107,16 @@ class PetsController < ApplicationController
 
   def find_pet
     @pet = Pet.find(params[:id])
+  end
+
+  def pets_available(pets,period)
+    pets_available = []
+    pets.each do |pet|
+      not_available = pet.bookings.any? do |booking|
+        period.overlaps?(booking.period)
+      end
+      pets_available << pet unless not_available
+    end
+    return pets_available
   end
 end
