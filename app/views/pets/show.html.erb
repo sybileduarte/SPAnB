@@ -29,10 +29,6 @@
       </a>
     </div>
 
-
-
-
-
   <div class = "description&background d-flex justify-content-center mt-5">
     <div class= "pet-description mr-3">
       <div class= "description-header d-flex justify-content-between align-items-center pt-3">
@@ -96,8 +92,10 @@
       </div>
       <% end %>
   </div>
+
+  <button id="sweet-alert-demo" class="btn btn-danger">Unlist <%= @pet.name %> from booking</button>
+  <%= link_to "", pet_path(@pet), method: :delete, id: "delete-link" %>
 </div>
 
-<% if policy(@pet).destroy? %>
-  <%= link_to "Unlist pet", pet_path(@pet), method: "delete", data: {confirm: "Are you sure ?"} %>
-<% end %>
+
+
