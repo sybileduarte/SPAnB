@@ -1,7 +1,7 @@
 class Booking < ApplicationRecord
   belongs_to :pet
   belongs_to :user
-  has_one :review
+  has_one :review, dependent: :nullify
   validate :end_after_start
   validate :validate_other_booking_overlap
   validates :start_date, presence: true

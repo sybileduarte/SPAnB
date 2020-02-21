@@ -29,9 +29,13 @@
             <% end %>
           </small></p>
           <% if Integer(Date.today - booking.end_date) < 0%>
-          <class class="d-flex text-align-items">
+          <class class="d-flex align-items-center justify-content-between">
             <button class="btn btn-secondary">You can't review yet !</button>
-            <p class="secondary">Cancel Booking</p>
+            <p class="cancel align-self-center m-0 bd-highligh">
+              <% if policy(booking).destroy? %>
+                <%= link_to "Cancel Booking", booking_path(booking), method: "delete", data: {confirm: "Are you sure ?"} %>
+              <% end %>
+          </p>
           </class>
           <% elsif booking.review.nil? %>
             <button class="add-review btn btn-secondary">Add a review</button>
