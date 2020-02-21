@@ -17,6 +17,9 @@
           <%= link_to "Add a pet",new_pet_path, class: "nav-link #{params[:action] == 'home' ? 'white' : 'black'}" %>
         </li>
         <li class="nav-item">
+          <%= link_to "My Pets",mypets_path, class: "nav-link #{params[:action] == 'home' ? 'white' : 'black'}" %>
+        </li>
+        <li class="nav-item">
           <%= link_to "My Bookings",bookings_path, class: "nav-link #{params[:action] == 'home' ? 'white' : 'black'}" %>
         </li>
         <li class="nav-item">

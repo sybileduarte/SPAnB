@@ -32,4 +32,8 @@ class PetPolicy < ApplicationPolicy
   def destroy?
     record.user == user
   end
+
+  def ownerview
+    record.user == user
+  end
 end
