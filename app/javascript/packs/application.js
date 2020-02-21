@@ -9,6 +9,8 @@ import { selectSpecie } from '../components/form_specie_selection';
 import { clickTags } from '../components/form_specie_clickable_tag'
 import { initMapbox } from '../plugins/init_mapbox';
 import "../plugins/flatpickr"
+import { dynamicPrice } from '../plugins/dynamicPrice';
+
 
 selectSpecie();
 clickTags();
@@ -17,3 +19,4 @@ showFormReview();
 dynamicRating();
 loadDynamicBannerText();
 initSweetalert('#sweet-alert-demo');
+dynamicPrice();
