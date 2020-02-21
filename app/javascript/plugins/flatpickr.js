@@ -13,5 +13,11 @@ import rangePlugin from "flatpickr/dist/plugins/rangePlugin"
     dateFormat: "Y-m-d",
     "disable": bookings,
   })
+
+  flatpickr("#range_start", {
+    onChange: function(selectedDates, selectedDate) {
+      console.log("hello")
+    }
+  })
 }
 

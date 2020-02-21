@@ -7,13 +7,13 @@
   }
 }
 
-.see-review button {
+.see-review {
   text-decoration: none;
   color: white;
+}
 
-  &:hover {
-    color: white;
-  }
+.see-review:hover a {
+  color:white;
 }
 
 
