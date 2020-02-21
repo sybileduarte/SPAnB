@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   resources :bookings, only: [:index, :destroy] do
     resources :reviews, only: [:create]
   end
+  get '/mypets/', to: 'pets#ownerview'
 end
