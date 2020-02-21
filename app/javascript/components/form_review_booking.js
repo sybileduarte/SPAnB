@@ -3,7 +3,7 @@ const showFormReview = () => {
   if (btnReviews){
     btnReviews.forEach((btn) => {
       btn.addEventListener("click", (event) => {
-        event.currentTarget.parentElement.parentElement.parentElement.parentElement.parentElement.children[1].classList.toggle("d-none")
+        event.currentTarget.parentElement.parentElement.lastElementChild.classList.toggle("d-none")
       })
     })
   };
