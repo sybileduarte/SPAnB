@@ -1,22 +1,24 @@
 <div class="container">
 
 <h1>My bookings</h1>
-
 <% @bookings.each do |booking| %>
   <div class="booking">
   <div class="card mb-3" style="max-width: 540px;">
     <div class="row no-gutters">
-      <div class="col-md-4">
-       <% if booking.pet.photos.attached? %>
-          <%= cl_image_tag booking.pet.photos.first.key, crop: :fill %>
-       <% else %>
-         <img src="https://jardinage.lemonde.fr/images/dossiers/2019-11/berger-autralien-merle-094920.jpg">
-       <% end %>
+      <div class="col-md-4 p-2">
+        <%= link_to pet_path(booking.pet) do %>
+          <% if booking.pet.photos.attached? %>
+            <%=cl_image_tag booking.pet.photos.first.key, crop: :fill, width:"180", height:"180" %>
+         <% else %>
+           <img src="https://jardinage.lemonde.fr/images/dossiers/2019-11/berger-autralien-merle-094920.jpg", width="180", height="180">
+         <% end %>
+        <% end %>
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title"><%= booking.pet.name %></h5>
+          <h5 class="card-title"><%= booking.pet.name %> - <%= booking.pet.race.name %></h5>
           <p class="card-text">From <%= booking.start_date.strftime("%d/%m") %> to <%= booking.end_date.strftime("%d/%m") %></p>
+          <p class="card-text"></p>
           <p class="card-text"><small class="text-muted">
             <% if Integer(Date.today - booking.end_date) > 0 %>
             <%= Integer(Date.today - booking.end_date) %> days ago
@@ -26,7 +28,21 @@
             The pet is coming soon to you
             <% end %>
           </small></p>
-          <% if booking.review.nil? %>
+
+          <% if Integer(Date.today - booking.end_date) < 0%>
+
+            <div class="d-flex align-items-center justify-content-between">
+              <button class="btn btn-secondary">You can't review yet !</button>
+              <% if Integer(Date.today - booking.start_date) < 0 %>
+              <p class="cancel align-self-center m-0 bd-highligh">
+                <% if policy(booking).destroy? %>
+                  <%= link_to "Cancel Booking", booking_path(booking), method: "delete", data: {confirm: "Are you sure ?"} %>
+                <% end %>
+              </p>
+          <% end %>
+          </div>
+
+          <% elsif booking.review.nil? %>
             <button class="add-review btn btn-secondary">Add a review</button>
           <% else %>
             <button class="see-review btn btn-outline-secondary"> <%= link_to "See my review", pet_path(booking.pet) %> </button>
@@ -35,6 +51,7 @@
       </div>
     </div>
   </div>
+
 
   <div class="d-none my-3">
     <%= simple_form_for([booking, @review]) do |t| %>
@@ -49,6 +66,7 @@
     <% end %>
   </div>
 <% end %>
+</div>
 </div>
 </div>
 </div>
