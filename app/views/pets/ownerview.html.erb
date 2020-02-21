@@ -12,3 +12,42 @@
     </div>
   </div>
 </div>
+<h2 class= text-center>My bookings as owner</h2>
+
+  <div class="bookings-grid">
+    <% @pets.each do |pet| %>
+      <% pet.bookings.each do |booking| %>
+        <div>
+          <div class="card p-4">
+            <div class="d-flex mb-3">
+              <div>
+                <%= link_to pet_path(booking.pet) do %>
+                  <% if booking.pet.photos.attached? %>
+                    <%= cl_image_tag booking.pet.photos.first.key, crop: :fill, width:"180", height:"180" %>
+                  <% else %>
+                    <img src="https://jardinage.lemonde.fr/images/dossiers/2019-11/berger-autralien-merle-094920.jpg", width="180", height="180">
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="ml-3">
+                <h5 class="card-title"><%= booking.pet.name %> - <%= booking.pet.race.name %></h5>
+                <p class="card-text">From <%= booking.start_date.strftime("%d/%m") %> to <%= booking.end_date.strftime("%d/%m") %></p>
+                <p class="card-text">
+                  <small class="text-muted">
+                    <% if Integer(Date.today - booking.end_date) > 0 %>
+                      <%= Integer(Date.today - booking.end_date) %> days ago
+                    <% elsif Integer(Date.today - booking.start_date) >= 0 %>
+                      Still away !
+                    <% else %>
+                      The booking day is soon !
+                    <% end %>
+                    <%= booking.user.first_name %> is booking your pet.
+                  </small>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>

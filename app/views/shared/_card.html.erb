@@ -6,7 +6,7 @@
   <% end %>
   <div class= "card-pet-info">
     <div>
-      <h2><%= pet.race.name %></h2>
+      <h2><%= pet.name + " - "+ pet.race.name  %></h2>
       <h3><%= pet.description %></h3>
       <div class="tags">
         <%  pet.tag_list.each do |tag| %>
