@@ -13,5 +13,15 @@ import rangePlugin from "flatpickr/dist/plugins/rangePlugin"
     dateFormat: "Y-m-d",
     "disable": bookings,
   })
-}
+};
 
+const bookingSearch = document.getElementById('search-date');
+
+if (bookingSearch) {
+  flatpickr("#range_start", {
+    plugins: [new rangePlugin({ input: "#range_end"})],
+    minDate: "today",
+    // inline: true,
+    dateFormat: "Y-m-d",
+  })
+}

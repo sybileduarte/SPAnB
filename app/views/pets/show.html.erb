@@ -33,10 +33,15 @@
     <div class= "pet-description mr-3">
       <div class= "description-header d-flex justify-content-between align-items-center pt-3">
         <div>
-          <h1><%= @pet.name %></h1>
-          <% @pet.tag_list.each do |tag| %>
-             <h6 class="tag"><%= tag %></h6>
+          <% if policy(@pet).destroy? %>
+            <%= link_to "Unlist pet", pet_path(@pet), method: "delete", data: {confirm: "Are you sure ?"}, class: "btn btn-danger"%>
           <% end %>
+          <h1><%= @pet.name %></h1>
+          <div class="d-flex">
+          <% @pet.tag_list.each do |tag| %>
+            <h6 class="tag"><%= tag %></h6>
+          <% end %>
+          </div>
         </div>
         <div class= "display-price d-flex justify-content-between">
           <h4> <%= @pet.price%>€/day</h4>
@@ -65,30 +70,27 @@
                 <li><%= @pet.address %></li>
               </ul>
             </div>
-            <div class = "card-pet-description text-center p-3">
-              <ul>
-                <li><i class="fas fa-question mb-2"></i></li>
-                <li><%= @pet.description %></div></li>
-               </ul>
-            </div>
+          </div>
+            <h2 class="mt-3">Description</h2>
+            <p class = "card-pet-description text-center p-3"> <%= @pet.description %></p>
           </div>
         </div>
       </div>
       <div class="mt-5 ml-3"> <%= render 'shared/flatpickr_form' %></div>
     </div>
   </div>
-  <h2>Description</h2>
-  <h2>Reviews</h2>
-  <div class="mt-3 d-flex justify-content-evenly align-items-center card-review-description">
+  <hr class = "m-5">
+  <h4 class= "ml-5">Reviews</h4>
+  <div class="mt-3 p-3 card-review-description">
     <% @pet.reviews.each do |review| %>
-      <div class="stars-display pt-2 pb-2 mr-5 ml-2">
+      <div class="stars-display">
         <% review.rating.times do |index| %>
           <i class="far fa-star custom-stars"></i>
         <% end %>
       </div>
-      <div class="d-flex justify-content-around mt-3">
-        <p class="mr-5 ml-5"><%= review.content %></p>
-        <p>Posted by <%= review.booking.user.first_name %></p>
+      <div class ="mt-4">
+        <p><em>Posted by</em><strong><%= review.booking.user.first_name %></strong></p>
+        <h6><%= review.content %></h6>
       </div>
       <% end %>
   </div>
@@ -96,6 +98,3 @@
   <button id="sweet-alert-demo" class="btn btn-danger">Unlist <%= @pet.name %> from booking</button>
   <%= link_to "", pet_path(@pet), method: :delete, id: "delete-link" %>
 </div>
-
-
-
