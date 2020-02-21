@@ -1,0 +1,14 @@
+<h1 class="text-center">Welcome to your kennel!</h1>
+<div class ="content">
+  <div class="row">
+    <div class="col">
+      <div class="cards center-cards">
+        <% @pets.each do |pet| %>
+          <%= link_to pet_path(pet) do %>
+           <%= render partial: "shared/card", locals:{pet: pet} %>
+          <% end %>
+        <%end %>
+      </div>
+    </div>
+  </div>
+</div>

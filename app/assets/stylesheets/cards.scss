@@ -9,11 +9,28 @@
   border-top: 1px solid rgb(200,200,200);
 }
 
+.center-cards{
+  display: grid;
+  grid-template-columns:1fr 1fr 1fr;
+}
+
 .card-pet img {
   height: 100%;
   width: 300px;
   object-fit: cover;
   border-radius:5px;
+}
+
+.tags .bookable {
+  background-color: green;
+  opacity: 0.8;
+  color:white;
+}
+
+.tags .not_bookable {
+  background-color: red;
+  opacity: 0.6;
+  color:white;
 }
 
 .bookings-grid img{
