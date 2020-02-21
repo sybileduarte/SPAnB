@@ -24,7 +24,7 @@
 }
 
 .search-engine{
-  width:750px;
+  width:900px;
   padding:20px;
   border-radius: 5px;
   overflow: hidden;
@@ -40,6 +40,7 @@
 }
 .search-engine .btn {
   width:80px;
+  margin-left:12px;
 }
 
 
@@ -87,4 +88,10 @@
 .btn-dark{
   position:absolute;
   right:0px;
+}
+
+.search-date-engine{
+  margin-left:12px;
+  width:20%;
+  border-radius:7px;
 }

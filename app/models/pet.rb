@@ -29,4 +29,15 @@ class Pet < ApplicationRecord
       tsearch: { prefix: true }
     }
 
+    def self.available(period)
+      pets = Pet.all
+      pets_available = []
+      pets.each do |pet|
+        not_available = pet.bookings.any? do |booking|
+          period.overlaps?(booking.period)
+        end
+        pets_available << pet unless not_available
+      end
+      return pets_available
+    end
 end

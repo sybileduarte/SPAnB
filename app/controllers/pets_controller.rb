@@ -17,6 +17,15 @@ class PetsController < ApplicationController
       end
     end
 
+    if (params[:start_date].present? && params[:end_date].present?)
+      range = (:start_date..:end_date)
+      @pets = policy_scope(Pet).available(range)
+      raise
+    else
+      @pets = policy_scope(Pet).order(created_at: :desc)
+      raise
+    end
+
     @markers = @pets.map do |pet|
       {
         lat: pet.latitude,

@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to bookings_path
     else
-      render :new
+      redirect_to pet_path(@pet)
     end
   end
 
