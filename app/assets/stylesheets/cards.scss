@@ -73,7 +73,7 @@ h3 {
   opacity: 0.9;
 
   i {
-    font-size: 100px;
+    font-size: 50px;
     opacity: 0.5;
   }
 
@@ -87,7 +87,7 @@ h3 {
 
  .cards-descriptions {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
  }
 
