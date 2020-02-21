@@ -17,7 +17,7 @@ class PetsController < ApplicationController
       end
     end
 
-    if (params[:start_date].present? && params[:end_date].present?)
+    if (params[:start_date][0] != "" && params[:end_date][0] !="")
       start_date = Date.parse params[:start_date][0]
       end_date = Date.parse params[:end_date][0]
       range = (start_date..end_date)
