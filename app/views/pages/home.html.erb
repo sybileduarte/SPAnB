@@ -4,7 +4,7 @@
     <h2 class ="text-typed">
       <span id="banner-typed-text"></span>
     </h2>
-    <div class="search-engine search-bar">
+    <div class="search-engine search-bar", id="search-date">
       <%= form_tag pets_path, method: :get, class:"horizontal" do %>
           <%= text_field_tag :query,
             params[:query],
@@ -16,6 +16,8 @@
             class: "form-control address",
             placeholder: "Lille Flandres..."
           %>
+          <%= text_field :start_date, params[:start_date], id: "range_start", class: "form-control search-date-engine", placeholder: "Tell us when"%>
+          <%= text_field :end_date, params[:end_date], id: "range_end", class: "d-none" %>
           <%= submit_tag "Search", class: "btn btn-dark" %>
       <% end %>
     </div>
