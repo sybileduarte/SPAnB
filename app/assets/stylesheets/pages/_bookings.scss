@@ -1,0 +1,17 @@
+.bookings-grid {
+  display: grid;
+  grid-gap: 10px;
+}
+
+
+@media(max-width: 600px) {
+  .bookings-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media(min-width: 1200px) {
+  .bookings-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
